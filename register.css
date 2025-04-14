@@ -1,0 +1,252 @@
+/* Registration Page Styles */
+.register-section {
+    padding: 100px 0;
+    min-height: calc(100vh - 80px);
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+}
+
+.register-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.register-header {
+    padding: 30px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.register-header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.register-header p {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.register-form-container {
+    padding: 30px;
+}
+
+.register-form .form-group {
+    margin-bottom: 20px;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+    padding-left: 35px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.input-with-icon .toggle-password {
+    left: auto;
+    right: 12px;
+    cursor: pointer;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.password-requirements {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.password-requirements p {
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.password-requirements li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 2px;
+    color: #999;
+}
+
+.password-requirements li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #dc3545;
+}
+
+.password-requirements li.valid {
+    color: #28a745;
+}
+
+.password-requirements li.valid::before {
+    content: '✓';
+    color: #28a745;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+.form-actions {
+    margin-top: 30px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.fa-spinner {
+    margin-right: 8px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.register-footer {
+    padding: 20px 30px;
+    text-align: center;
+    border-top: 1px solid #e1e1e1;
+    background-color: #f8f9fa;
+}
+
+.register-footer p {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+.register-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-section {
+        padding: 80px 0;
+    }
+    
+    .register-container {
+        max-width: 100%;
+        margin: 0 20px;
+    }
+}

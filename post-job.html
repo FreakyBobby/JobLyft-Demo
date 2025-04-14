@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-job.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html" class="active">Post a Job</a>
+                <a href="my-jobs.html">My Jobs</a>
+            </div>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="User Profile">
+                    <span id="user-email">user@example.com</span>
+                </div>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="post-job-page">
+        <div class="post-job-header">
+            <h1>Post a New Job</h1>
+            <p>Fill out the form below to post your job listing. Make sure to provide clear and detailed information to attract the best candidates.</p>
+        </div>
+
+        <div class="post-job-form-container">
+            <!-- Success Message -->
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>Job Posted Successfully!</h3>
+                <p>Your job listing has been published and is now visible to potential candidates.</p>
+                <a href="my-jobs.html" class="btn btn-primary">View My Jobs</a>
+            </div>
+
+            <form id="postJobForm" class="post-job-form">
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h2><i class="fas fa-info-circle"></i> Basic Information</h2>
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title*</label>
+                        <input type="text" id="jobTitle" name="jobTitle" required placeholder="e.g., Senior Software Engineer">
+                        <div class="error-message">Please enter a job title</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Company Name*</label>
+                        <input type="text" id="companyName" name="companyName" required placeholder="e.g., TechCorp Inc.">
+                        <div class="error-message">Please enter your company name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobType">Job Type*</label>
+                        <select id="jobType" name="jobType" required>
+                            <option value="">Select job type</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Internship">Internship</option>
+                        </select>
+                        <div class="error-message">Please select a job type</div>
+                    </div>
+                </div>
+
+                <!-- Location & Salary -->
+                <div class="form-section">
+                    <h2><i class="fas fa-map-marker-alt"></i> Location & Salary</h2>
+                    <div class="form-group">
+                        <label for="location">Location*</label>
+                        <input type="text" id="location" name="location" required placeholder="e.g., San Francisco, CA or Remote">
+                        <div class="error-message">Please enter a location</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary Range*</label>
+                        <div class="salary-inputs">
+                            <input type="number" id="salaryMin" name="salaryMin" required placeholder="Min" min="0">
+                            <span>to</span>
+                            <input type="number" id="salaryMax" name="salaryMax" required placeholder="Max" min="0">
+                        </div>
+                        <div class="error-message">Please enter a valid salary range</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="salaryType">Salary Type</label>
+                        <select id="salaryType" name="salaryType">
+                            <option value="yearly">Yearly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="hourly">Hourly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Job Description -->
+                <div class="form-section">
+                    <h2><i class="fas fa-file-alt"></i> Job Description</h2>
+                    <div class="form-group">
+                        <label for="description">Job Description*</label>
+                        <textarea id="description" name="description" required placeholder="Provide a detailed description of the role, responsibilities, and requirements..."></textarea>
+                        <div class="error-message">Please enter a job description</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="requirements">Requirements*</label>
+                        <textarea id="requirements" name="requirements" required placeholder="List the required qualifications, skills, and experience..."></textarea>
+                        <div class="error-message">Please enter job requirements</div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h2><i class="fas fa-plus-circle"></i> Additional Information</h2>
+                    <div class="form-group">
+                        <label for="benefits">Benefits & Perks</label>
+                        <textarea id="benefits" name="benefits" placeholder="List any benefits, perks, or additional information..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="applicationUrl">Application URL</label>
+                        <input type="url" id="applicationUrl" name="applicationUrl" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="companyLogo">Company Logo</label>
+                        <div class="file-upload">
+                            <input type="file" id="companyLogo" name="companyLogo" accept="image/*">
+                            <label for="companyLogo">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose a file or drag it here</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div class="form-section">
+                    <h2><i class="fas fa-cog"></i> Job Preferences</h2>
+                    <div class="form-group">
+                        <label for="experience">Experience Level*</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select experience level</option>
+                            <option value="Entry">Entry Level</option>
+                            <option value="Mid">Mid Level</option>
+                            <option value="Senior">Senior Level</option>
+                            <option value="Lead">Lead</option>
+                            <option value="Executive">Executive</option>
+                        </select>
+                        <div class="error-message">Please select an experience level</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="education">Education Level</label>
+                        <select id="education" name="education">
+                            <option value="">Select education level</option>
+                            <option value="High School">High School</option>
+                            <option value="Associate">Associate Degree</option>
+                            <option value="Bachelor">Bachelor's Degree</option>
+                            <option value="Master">Master's Degree</option>
+                            <option value="PhD">PhD</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remote" name="remote">
+                        <label for="remote">This is a remote position</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="featured" name="featured">
+                        <label for="featured">Feature this job listing (additional cost)</label>
+                    </div>
+                </div>
+
+                <!-- Terms and Submit -->
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the terms and conditions*</label>
+                    </div>
+                    <div class="error-message">You must agree to the terms and conditions</div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="saveDraft">Save as Draft</button>
+                        <button type="submit" class="btn btn-primary" id="submitJob">Post Job</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>For Job Seekers</h3>
+                <ul>
+                    <li><a href="#">Browse Jobs</a></li>
+                    <li><a href="#">Create Resume</a></li>
+                    <li><a href="#">Job Alerts</a></li>
+                    <li><a href="#">Career Advice</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Employers</h3>
+                <ul>
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Browse Candidates</a></li>
+                    <li><a href="#">Pricing Plans</a></li>
+                    <li><a href="#">Recruitment Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Joblyft. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="post-job.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

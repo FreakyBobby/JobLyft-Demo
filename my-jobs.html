@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Jobs - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="my-jobs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="my-jobs.html" class="active">My Jobs</a>
+                <a href="employer-dashboard.html" class="btn btn-primary">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="my-jobs-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>My Posted Jobs</h1>
+                <p>Manage your job postings and track applications</p>
+                <a href="post-job.html" class="btn btn-primary"><i class="fas fa-plus"></i> Post New Job</a>
+            </div>
+
+            <div class="job-filters">
+                <div class="search-filter">
+                    <input type="text" id="job-search" placeholder="Search your jobs...">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filter-options">
+                    <select id="status-filter">
+                        <option value="all">All Statuses</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="expired">Expired</option>
+                    </select>
+                    <select id="sort-filter">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="applications">Most Applications</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="jobs-container">
+                <div class="jobs-list">
+                    <!-- Job items will be dynamically loaded here -->
+                    <div class="job-item">
+                        <div class="job-header">
+                            <h3>Software Developer Intern</h3>
+                            <span class="job-status active">Active</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-building"></i> Tech Innovations Inc.</p>
+                            <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+                            <p><i class="fas fa-briefcase"></i> Internship</p>
+                            <p><i class="fas fa-calendar-alt"></i> Posted: May 15, 2023</p>
+                            <p><i class="fas fa-users"></i> 24 Applications</p>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-secondary view-applications">View Applications</button>
+                            <button class="btn btn-primary edit-job">Edit</button>
+                            <button class="btn btn-danger delete-job">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="job-header">
+                            <h3>Marketing Assistant</h3>
+                            <span class="job-status pending">Pending</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-building"></i> Global Marketing Solutions</p>
+                            <p><i class="fas fa-map-marker-alt"></i> New York, NY</p>
+                            <p><i class="fas fa-briefcase"></i> Part-time</p>
+                            <p><i class="fas fa-calendar-alt"></i> Posted: June 2, 2023</p>
+                            <p><i class="fas fa-users"></i> 12 Applications</p>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-secondary view-applications">View Applications</button>
+                            <button class="btn btn-primary edit-job">Edit</button>
+                            <button class="btn btn-danger delete-job">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="job-item">
+                        <div class="job-header">
+                            <h3>Data Analyst</h3>
+                            <span class="job-status expired">Expired</span>
+                        </div>
+                        <div class="job-details">
+                            <p><i class="fas fa-building"></i> Data Insights Corp</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Chicago, IL</p>
+                            <p><i class="fas fa-briefcase"></i> Full-time</p>
+                            <p><i class="fas fa-calendar-alt"></i> Posted: April 10, 2023</p>
+                            <p><i class="fas fa-users"></i> 45 Applications</p>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-secondary view-applications">View Applications</button>
+                            <button class="btn btn-primary edit-job">Edit</button>
+                            <button class="btn btn-danger delete-job">Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-stats">
+                    <h3>Job Statistics</h3>
+                    <div class="stats-card">
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Total Jobs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Active</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Expired</span>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <h4>Application Overview</h4>
+                        <div class="stat-item">
+                            <span class="stat-number">81</span>
+                            <span class="stat-label">Total Applications</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">New This Week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="#">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="my-jobs.js"></script>
+</body>
+</html> 

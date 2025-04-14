@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="employer-dashboard.html" class="active">Dashboard</a>
+            </div>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    <span id="user-email">roshio@gmail.com</span>
+                </div>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Employer Dashboard</h1>
+                <p>Welcome back, <span id="welcome-name">Roshio</span>! Here's an overview of your job postings and applications.</p>
+            </div>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Active Jobs</h3>
+                        <p class="stat-number">12</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Applications</h3>
+                        <p class="stat-number">48</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Job Views</h3>
+                        <p class="stat-number">1,245</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Candidates Hired</h3>
+                        <p class="stat-number">5</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-sidebar">
+                    <div class="sidebar-menu">
+                        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="#"><i class="fas fa-briefcase"></i> My Jobs</a>
+                        <a href="#"><i class="fas fa-file-alt"></i> Applications</a>
+                        <a href="#"><i class="fas fa-users"></i> Candidates</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-main">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Job Postings</h2>
+                            <a href="post-job.html" class="btn btn-primary">Post New Job</a>
+                        </div>
+                        <div class="card-content">
+                            <table class="dashboard-table">
+                                <thead>
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <th>Posted Date</th>
+                                        <th>Applications</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Senior Software Engineer</td>
+                                        <td>May 15, 2023</td>
+                                        <td>24</td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View Applications"><i class="fas fa-users"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Product Manager</td>
+                                        <td>May 10, 2023</td>
+                                        <td>18</td>
+                                        <td><span class="status active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View Applications"><i class="fas fa-users"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>UX Designer</td>
+                                        <td>April 28, 2023</td>
+                                        <td>6</td>
+                                        <td><span class="status expired">Expired</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="btn-icon" title="View Applications"><i class="fas fa-users"></i></button>
+                                                <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon" title="Delete"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Applications</h2>
+                            <a href="#" class="btn btn-secondary">View All</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="application-list">
+                                <div class="application-item">
+                                    <div class="application-info">
+                                        <h3>John Smith</h3>
+                                        <p>Senior Software Engineer</p>
+                                        <span class="application-date">Applied: May 18, 2023</span>
+                                    </div>
+                                    <div class="application-actions">
+                                        <button class="btn btn-primary">View Resume</button>
+                                        <button class="btn btn-secondary">Contact</button>
+                                    </div>
+                                </div>
+                                <div class="application-item">
+                                    <div class="application-info">
+                                        <h3>Emily Johnson</h3>
+                                        <p>Product Manager</p>
+                                        <span class="application-date">Applied: May 17, 2023</span>
+                                    </div>
+                                    <div class="application-actions">
+                                        <button class="btn btn-primary">View Resume</button>
+                                        <button class="btn btn-secondary">Contact</button>
+                                    </div>
+                                </div>
+                                <div class="application-item">
+                                    <div class="application-info">
+                                        <h3>Michael Brown</h3>
+                                        <p>Senior Software Engineer</p>
+                                        <span class="application-date">Applied: May 16, 2023</span>
+                                    </div>
+                                    <div class="application-actions">
+                                        <button class="btn btn-primary">View Resume</button>
+                                        <button class="btn btn-secondary">Contact</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="#">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="employer-dashboard.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

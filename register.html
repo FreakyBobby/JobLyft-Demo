@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="register.html" class="active">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="register-section">
+        <div class="container">
+            <div class="register-container">
+                <div class="register-header">
+                    <h1>Create an Account</h1>
+                    <p>Join Joblyft to find your dream job or hire the perfect candidate</p>
+                </div>
+                <div class="register-form-container">
+                    <form id="register-form" class="register-form">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="error-message" id="fullname-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" placeholder="Create a password" required>
+                                <i class="fas fa-eye toggle-password" id="toggle-password"></i>
+                            </div>
+                            <div class="error-message" id="password-error"></div>
+                            <div class="password-requirements">
+                                <p>Password must contain:</p>
+                                <ul>
+                                    <li id="length-check">At least 8 characters</li>
+                                    <li id="uppercase-check">One uppercase letter</li>
+                                    <li id="lowercase-check">One lowercase letter</li>
+                                    <li id="number-check">One number</li>
+                                    <li id="special-check">One special character</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                            </div>
+                            <div class="error-message" id="confirm-password-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">I am a</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user-tie"></i>
+                                <select id="role" name="role" required>
+                                    <option value="jobseeker">Job Seeker</option>
+                                    <option value="employer">Employer</option>
+                                </select>
+                            </div>
+                            <div class="error-message" id="role-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                            </div>
+                            <div class="error-message" id="terms-error"></div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="register-footer">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="#">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="register.js"></script>
+</body>
+</html>

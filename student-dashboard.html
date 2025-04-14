@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="student-dashboard.html" class="active">Dashboard</a>
+            </div>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Profile">
+                    <span id="user-email">user@example.com</span>
+                </div>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>My Applications</h1>
+            <p>Welcome back, <span id="welcome-name">User</span>! Here's an overview of your job applications.</p>
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total Applications</h3>
+                    <p id="totalApplications">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p id="pendingApplications">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Accepted</h3>
+                    <p id="acceptedApplications">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Rejected</h3>
+                    <p id="rejectedApplications">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search applications...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <select id="dateFilter">
+                    <option value="all">All Time</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                    <option value="year">This Year</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="applications-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsTableBody">
+                    <!-- Applications will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Joblyft</h3>
+                    <p>Connecting talent with opportunity</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="job-search.html">Find Jobs</a></li>
+                        <li><a href="post-job.html">Post a Job</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Joblyft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="student-dashboard.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>

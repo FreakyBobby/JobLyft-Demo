@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joblyft - Elevate Your Job Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <div id="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+                <div id="user-menu" style="display: none;">
+                    <a href="job-search.html">Find Jobs</a>
+                    <a href="post-job.html" class="btn btn-primary">Post a Job</a>
+                    <button id="logout-btn" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Lift Your Career to New Heights</h1>
+                <p>Joblyft connects talented students with innovative employers, creating opportunities that elevate both careers and companies.</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search for jobs, skills, or companies">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="cta-buttons">
+                    <a href="job-search.html" class="btn btn-primary">Find Jobs</a>
+                    <a href="post-job.html" class="btn btn-secondary">Post a Job</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-label">Active Jobs</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5,000+</span>
+                        <span class="stat-label">Companies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Job Seekers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Job Search">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Joblyft</h2>
+                <p>Our platform offers unique advantages for both job seekers and employers</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Job Matching</h3>
+                    <p>Our AI-powered algorithm matches you with jobs that fit your skills and preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Quick Apply</h3>
+                    <p>Apply to multiple jobs with a single click using your saved profile.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Career Insights</h3>
+                    <p>Get valuable insights about salary trends and career paths in your industry.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Job Alerts</h3>
+                    <p>Receive notifications when new jobs matching your criteria are posted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How Joblyft Works</h2>
+                <p>Simple steps to find your dream job or hire the perfect candidate</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Sign up and build your professional profile with your skills and experience.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Search or Post</h3>
+                    <p>Search for jobs or post job openings if you're an employer.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect</h3>
+                    <p>Apply to jobs or review applications and connect with potential candidates.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Get Hired</h3>
+                    <p>Interview and land your dream job or find the perfect candidate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Users Say</h2>
+                <p>Hear from students and employers who have found success with Joblyft</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Joblyft helped me find my first internship in just two weeks! The platform is so easy to use and the job matching is spot-on."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Computer Science Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As an employer, Joblyft has streamlined our hiring process. We've found exceptional talent from top universities across the country."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen">
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <p>HR Director, Tech Innovations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Elevate Your Career?</h2>
+            <p>Join thousands of students and employers who have found success with Joblyft</p>
+            <div class="cta-buttons">
+                <a href="job-search.html" class="btn btn-primary">Find Jobs</a>
+                <a href="post-job.html" class="btn btn-secondary">Post a Job</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="#">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="lift-animation.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Check authentication status and update UI
+        async function updateAuthUI() {
+            const isAuthenticated = await auth.checkAuth();
+            const authButtons = document.getElementById('auth-buttons');
+            const userMenu = document.getElementById('user-menu');
+            
+            if (isAuthenticated) {
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'flex';
+            } else {
+                authButtons.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        // Add logout functionality
+        document.getElementById('logout-btn')?.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.href = '/login.html';
+        });
+
+        // Update UI on page load
+        document.addEventListener('DOMContentLoaded', updateAuthUI);
+    </script>
+</body>
+</html> 

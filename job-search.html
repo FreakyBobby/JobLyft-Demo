@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Jobs - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="job-search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html" class="active">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="my-jobs.html">My Jobs</a>
+                <a href="employer-dashboard.html" class="btn btn-primary">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="job-search-page">
+        <div class="container">
+            <div class="search-header">
+                <h1>Find Your Next Opportunity</h1>
+                <p>Discover thousands of job opportunities from top companies</p>
+                
+                <div class="search-box">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="job-search" placeholder="Job title, keywords, or company">
+                    </div>
+                    <div class="search-input">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="location-search" placeholder="Location">
+                    </div>
+                    <button class="btn btn-primary" id="search-button">Search Jobs</button>
+                </div>
+                
+                <div class="popular-searches">
+                    <span>Popular:</span>
+                    <a href="#" class="tag">Software Developer</a>
+                    <a href="#" class="tag">Marketing</a>
+                    <a href="#" class="tag">Data Analyst</a>
+                    <a href="#" class="tag">Remote</a>
+                    <a href="#" class="tag">Internship</a>
+                </div>
+            </div>
+            
+            <div class="search-results-container">
+                <div class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3>Job Type</h3>
+                        <div class="filter-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="job-type" value="full-time" checked>
+                                <span>Full-time</span>
+                                <span class="count">(245)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="job-type" value="part-time">
+                                <span>Part-time</span>
+                                <span class="count">(120)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="job-type" value="contract">
+                                <span>Contract</span>
+                                <span class="count">(85)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="job-type" value="internship">
+                                <span>Internship</span>
+                                <span class="count">(65)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="job-type" value="remote">
+                                <span>Remote</span>
+                                <span class="count">(180)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Experience Level</h3>
+                        <div class="filter-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="experience" value="entry">
+                                <span>Entry Level</span>
+                                <span class="count">(210)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="experience" value="mid">
+                                <span>Mid Level</span>
+                                <span class="count">(175)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="experience" value="senior">
+                                <span>Senior Level</span>
+                                <span class="count">(95)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="experience" value="lead">
+                                <span>Lead</span>
+                                <span class="count">(45)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Salary Range</h3>
+                        <div class="filter-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="salary" value="0-30k">
+                                <span>$0 - $30k</span>
+                                <span class="count">(75)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="salary" value="30k-60k">
+                                <span>$30k - $60k</span>
+                                <span class="count">(145)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="salary" value="60k-90k">
+                                <span>$60k - $90k</span>
+                                <span class="count">(185)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="salary" value="90k-120k">
+                                <span>$90k - $120k</span>
+                                <span class="count">(120)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="salary" value="120k+">
+                                <span>$120k+</span>
+                                <span class="count">(85)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Date Posted</h3>
+                        <div class="filter-options">
+                            <label class="radio-label">
+                                <input type="radio" name="date-posted" value="any" checked>
+                                <span>Any time</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="date-posted" value="today">
+                                <span>Today</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="date-posted" value="3days">
+                                <span>Last 3 days</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="date-posted" value="week">
+                                <span>Last week</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="date-posted" value="month">
+                                <span>Last month</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary apply-filters">Apply Filters</button>
+                </div>
+                
+                <div class="search-results">
+                    <div class="results-header">
+                        <div class="results-count">
+                            <h2>Showing <span id="results-count">12</span> jobs</h2>
+                            <p>Based on your search criteria</p>
+                        </div>
+                        <div class="results-sort">
+                            <label for="sort-results">Sort by:</label>
+                            <select id="sort-results">
+                                <option value="relevance">Relevance</option>
+                                <option value="newest">Newest</option>
+                                <option value="salary-high">Salary (High to Low)</option>
+                                <option value="salary-low">Salary (Low to High)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="job-list" id="job-list">
+                        <!-- Job items will be dynamically loaded here -->
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="btn btn-secondary" id="prev-page" disabled>Previous</button>
+                        <div class="page-numbers">
+                            <button class="page-number active">1</button>
+                            <button class="page-number">2</button>
+                            <button class="page-number">3</button>
+                            <span>...</span>
+                            <button class="page-number">10</button>
+                        </div>
+                        <button class="btn btn-secondary" id="next-page">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="#">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="job-search.js"></script>
+</body>
+</html> 
