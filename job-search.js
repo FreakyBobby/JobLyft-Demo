@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayJobs(jobs) {
         if (!jobList) return;
         
+        // Update the results count display
+        const resultsCountElement = document.getElementById('results-count');
+        if (resultsCountElement) {
+            resultsCountElement.textContent = jobs.length;
+        }
+        
         if (jobs.length === 0) {
             if (noResultsMessage) {
                 noResultsMessage.style.display = 'block';
@@ -168,6 +174,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function updatePagination(total, pages) {
         if (!pagination) return;
         
+        // Update the page info display if it exists
+        const pageInfoElement = document.querySelector('.page-info');
+        if (pageInfoElement) {
+            const startItem = total === 0 ? 0 : (currentPage - 1) * jobsPerPage + 1;
+            const endItem = Math.min(currentPage * jobsPerPage, total);
+            pageInfoElement.textContent = `${startItem}-${endItem} of ${total}`;
+        }
+        
+        // If no jobs or only one page, hide pagination
+        if (total === 0 || pages <= 1) {
+            pagination.style.display = 'none';
+            return;
+        } else {
+            pagination.style.display = 'flex';
+        }
+        
         const paginationHTML = [];
         
         // Previous button
@@ -193,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 `);
             } else if (
-                i === currentPage - 3 || // Show dots before current page
-                i === currentPage + 3 // Show dots after current page
+                (i === currentPage - 3 && i > 1) || // Show dots before current page
+                (i === currentPage + 3 && i < pages) // Show dots after current page
             ) {
                 paginationHTML.push('<span class="page-dots">...</span>');
             }

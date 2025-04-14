@@ -195,16 +195,26 @@
                         <!-- Job items will be dynamically loaded here -->
                     </div>
                     
-                    <div class="pagination">
-                        <button class="btn btn-secondary" id="prev-page" disabled>Previous</button>
-                        <div class="page-numbers">
-                            <button class="page-number active">1</button>
-                            <button class="page-number">2</button>
-                            <button class="page-number">3</button>
-                            <span>...</span>
-                            <button class="page-number">10</button>
+                    <!-- Loading indicator -->
+                    <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Loading jobs...</p>
+                    </div>
+                    
+                    <!-- No results message -->
+                    <div id="no-results-message" class="no-results-message" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No Jobs Found</h3>
+                        <p>Try adjusting your search filters</p>
+                    </div>
+                    
+                    <div class="pagination-container">
+                        <div class="pagination-info">
+                            <span class="page-info">0-0 of 0</span>
                         </div>
-                        <button class="btn btn-secondary" id="next-page">Next</button>
+                        <div class="pagination" id="pagination">
+                            <!-- Pagination will be dynamically generated -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -257,4 +267,4 @@
 
     <script src="job-search.js"></script>
 </body>
-</html> 
+</html>
