@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 120px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--white);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: var(--white);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-builder {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 40px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .resume-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--background-color);
+            border-radius: var(--border-radius);
+        }
+
+        .resume-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resume-section h2 i {
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .add-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .remove-btn {
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .remove-btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .entry {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            border: 1px solid #e1e1e1;
+            transition: var(--transition);
+        }
+
+        .entry:hover {
+            box-shadow: var(--box-shadow);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .entry-header h3 {
+            color: var(--secondary-color);
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill-tag button {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .skill-tag button:hover {
+            opacity: 1;
+        }
+
+        .preview-btn {
+            background: #2ecc71;
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 18px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .preview-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* Preview Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--white);
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--box-shadow);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--light-text);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .resume-preview {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .resume-preview h1 {
+            color: var(--secondary-color);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .resume-preview .contact-info {
+            color: var(--light-text);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .resume-preview section {
+            margin-bottom: 30px;
+        }
+
+        .resume-preview h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .resume-preview .experience-item,
+        .resume-preview .education-item {
+            margin-bottom: 25px;
+        }
+
+        .resume-preview .experience-item h3,
+        .resume-preview .education-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .resume-preview .experience-item .company,
+        .resume-preview .education-item .school {
+            color: var(--light-text);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .resume-preview .experience-item .dates,
+        .resume-preview .education-item .dates {
+            color: var(--light-text);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .resume-preview .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .resume-preview .skill-tag {
+            background: var(--background-color);
+            color: var(--secondary-color);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="job-search.html">Find Jobs</a>
+                <a href="my-jobs.html">My Jobs</a>
+                <a href="employer-dashboard.html">Employer Dashboard</a>
+                <div id="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="register.html" class="btn btn-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Build Your Professional Resume</h1>
+        <p>Create a standout resume that will help you land your dream job</p>
+    </div>
+
+    <div class="resume-builder">
+        <form id="resumeForm">
+            <div class="resume-section">
+                <h2><i class="fas fa-user"></i> Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h2><i class="fas fa-file-alt"></i> Professional Summary</h2>
+                <div class="form-group">
+                    <label for="summary">Write a brief summary of your professional background and career goals</label>
+                    <textarea id="summary" name="summary" required></textarea>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                <div id="experienceEntries">
+                    <div class="entry">
+                        <div class="entry-header">
+                            <h3>Work Experience #1</h3>
+                            <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title</label>
+                            <input type="text" id="jobTitle" name="jobTitle[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobDates">Dates (e.g., Jan 2020 - Present)</label>
+                            <input type="text" id="jobDates" name="jobDates[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobDescription">Job Description</label>
+                            <textarea id="jobDescription" name="jobDescription[]" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addExperience()">
+                    <i class="fas fa-plus"></i> Add Work Experience
+                </button>
+            </div>
+
+            <div class="resume-section">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div id="educationEntries">
+                    <div class="entry">
+                        <div class="entry-header">
+                            <h3>Education #1</h3>
+                            <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="degree">Degree/Certificate</label>
+                            <input type="text" id="degree" name="degree[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">School/Institution</label>
+                            <input type="text" id="school" name="school[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="educationDates">Dates (e.g., 2016 - 2020)</label>
+                            <input type="text" id="educationDates" name="educationDates[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="educationDescription">Additional Information</label>
+                            <textarea id="educationDescription" name="educationDescription[]"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addEducation()">
+                    <i class="fas fa-plus"></i> Add Education
+                </button>
+            </div>
+
+            <div class="resume-section">
+                <h2><i class="fas fa-tools"></i> Skills</h2>
+                <div class="form-group">
+                    <label for="skillInput">Add Skills (press Enter after each skill)</label>
+                    <input type="text" id="skillInput" placeholder="Type a skill and press Enter">
+                </div>
+                <div id="skillsList" class="skills-container"></div>
+            </div>
+
+            <button type="submit" class="preview-btn">
+                <i class="fas fa-eye"></i> Preview Resume
+            </button>
+        </form>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="resumePreview" class="resume-preview">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <div class="action-buttons">
+                <button class="download-btn" onclick="downloadResume()">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="#">Career Resources</a>
+                        <a href="resume-builder.html">Resume Builder</a>
+                        <a href="#">Career Advice</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">Recruitment Solutions</a>
+                        <a href="#">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        let skillCount = 0;
+
+        function addExperience() {
+            const entries = document.getElementById('experienceEntries');
+            const entryCount = entries.children.length + 1;
+            const newEntry = document.createElement('div');
+            newEntry.className = 'entry';
+            newEntry.innerHTML = `
+                <div class="entry-header">
+                    <h3>Work Experience #${entryCount}</h3>
+                    <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
+                </div>
+                <div class="form-group">
+                    <label for="jobTitle${entryCount}">Job Title</label>
+                    <input type="text" id="jobTitle${entryCount}" name="jobTitle[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="company${entryCount}">Company</label>
+                    <input type="text" id="company${entryCount}" name="company[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDates${entryCount}">Dates (e.g., Jan 2020 - Present)</label>
+                    <input type="text" id="jobDates${entryCount}" name="jobDates[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="jobDescription${entryCount}">Job Description</label>
+                    <textarea id="jobDescription${entryCount}" name="jobDescription[]" required></textarea>
+                </div>
+            `;
+            entries.appendChild(newEntry);
+        }
+
+        function addEducation() {
+            const entries = document.getElementById('educationEntries');
+            const entryCount = entries.children.length + 1;
+            const newEntry = document.createElement('div');
+            newEntry.className = 'entry';
+            newEntry.innerHTML = `
+                <div class="entry-header">
+                    <h3>Education #${entryCount}</h3>
+                    <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
+                </div>
+                <div class="form-group">
+                    <label for="degree${entryCount}">Degree/Certificate</label>
+                    <input type="text" id="degree${entryCount}" name="degree[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="school${entryCount}">School/Institution</label>
+                    <input type="text" id="school${entryCount}" name="school[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="educationDates${entryCount}">Dates (e.g., 2016 - 2020)</label>
+                    <input type="text" id="educationDates${entryCount}" name="educationDates[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="educationDescription${entryCount}">Additional Information</label>
+                    <textarea id="educationDescription${entryCount}" name="educationDescription[]"></textarea>
+                </div>
+            `;
+            entries.appendChild(newEntry);
+        }
+
+        function removeEntry(button) {
+            const entry = button.closest('.entry');
+            entry.remove();
+        }
+
+        document.getElementById('skillInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const skill = this.value.trim();
+                if (skill) {
+                    addSkill(skill);
+                    this.value = '';
+                }
+            }
+        });
+
+        function addSkill(skill) {
+            const skillsList = document.getElementById('skillsList');
+            const skillTag = document.createElement('div');
+            skillTag.className = 'skill-tag';
+            skillTag.innerHTML = `
+                ${skill}
+                <button onclick="this.parentElement.remove()">&times;</button>
+            `;
+            skillsList.appendChild(skillTag);
+        }
+
+        function generatePreview() {
+            const preview = document.getElementById('resumePreview');
+            const form = document.getElementById('resumeForm');
+            
+            // Personal Information
+            const fullName = form.fullName.value;
+            const email = form.email.value;
+            const phone = form.phone.value;
+            const location = form.location.value;
+            
+            // Summary
+            const summary = form.summary.value;
+            
+            // Work Experience
+            const experienceEntries = document.querySelectorAll('#experienceEntries .entry');
+            let experienceHTML = '';
+            experienceEntries.forEach(entry => {
+                const title = entry.querySelector('input[name="jobTitle[]"]').value;
+                const company = entry.querySelector('input[name="company[]"]').value;
+                const dates = entry.querySelector('input[name="jobDates[]"]').value;
+                const description = entry.querySelector('textarea[name="jobDescription[]"]').value;
+                
+                experienceHTML += `
+                    <div class="experience-item">
+                        <h3>${title}</h3>
+                        <div class="company">${company}</div>
+                        <div class="dates">${dates}</div>
+                        <p>${description}</p>
+                    </div>
+                `;
+            });
+            
+            // Education
+            const educationEntries = document.querySelectorAll('#educationEntries .entry');
+            let educationHTML = '';
+            educationEntries.forEach(entry => {
+                const degree = entry.querySelector('input[name="degree[]"]').value;
+                const school = entry.querySelector('input[name="school[]"]').value;
+                const dates = entry.querySelector('input[name="educationDates[]"]').value;
+                const description = entry.querySelector('textarea[name="educationDescription[]"]').value;
+                
+                educationHTML += `
+                    <div class="education-item">
+                        <h3>${degree}</h3>
+                        <div class="school">${school}</div>
+                        <div class="dates">${dates}</div>
+                        ${description ? `<p>${description}</p>` : ''}
+                    </div>
+                `;
+            });
+            
+            // Skills
+            const skills = Array.from(document.querySelectorAll('.skill-tag'))
+                .map(tag => tag.textContent.trim())
+                .join(', ');
+            
+            // Generate the preview HTML
+            preview.innerHTML = `
+                <h1>${fullName}</h1>
+                <div class="contact-info">
+                    ${email} | ${phone} | ${location}
+                </div>
+                
+                <section>
+                    <h2>Professional Summary</h2>
+                    <p>${summary}</p>
+                </section>
+                
+                <section>
+                    <h2>Work Experience</h2>
+                    ${experienceHTML}
+                </section>
+                
+                <section>
+                    <h2>Education</h2>
+                    ${educationHTML}
+                </section>
+                
+                <section>
+                    <h2>Skills</h2>
+                    <div class="skills-list">
+                        ${skills.split(',').map(skill => `
+                            <span class="skill-tag">${skill.trim()}</span>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function showModal() {
+            document.getElementById('previewModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+
+        function closeModal() {
+            document.getElementById('previewModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        function downloadResume() {
+            const element = document.getElementById('resumePreview');
+            const opt = {
+                margin: 1,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Add a loading state to the button
+            const downloadBtn = document.querySelector('.download-btn');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            downloadBtn.disabled = true;
+
+            // Generate the PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore the button state
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            }).catch(err => {
+                console.error('Error generating PDF:', err);
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+                alert('Error generating PDF. Please try again.');
+            });
+        }
+
+        document.getElementById('resumeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generatePreview();
+            showModal();
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('previewModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html> 

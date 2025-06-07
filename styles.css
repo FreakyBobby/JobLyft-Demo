@@ -646,4 +646,21 @@ p {
 .social-links a:hover {
     transform: translateY(-3px);
     color: var(--primary-color);
+}
+
+.highlight-first-letters {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #4a90e2, #67b26f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.highlight-first-letters span {
+    color: #4a90e2;
+    font-size: 1.2em;
+    font-weight: 800;
 } 
