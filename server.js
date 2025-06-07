@@ -8,9 +8,13 @@ const Job = require('./Job');
 const Application = require('./Application');
 const { dbPromise, dbOperations } = require('./database');
 const crypto = require('crypto');
+const ChatbotLLM = require('./chatbot-llm');
 
 // Initialize Express app
 const app = express();
+
+// Initialize chatbot
+const chatbot = new ChatbotLLM();
 
 // Middleware
 app.use(cors());
@@ -489,7 +493,7 @@ async function startServer() {
                 const now = new Date().toISOString();
                 
                 // First delete any existing test user
-                await dbOperations.run('DELETE FROM users WHERE email = ?', ['test@example.com']);
+                await dbOperations.run('DELETE FROM users WHERE email = ?', ['test@example.com']);ƒ
                 
                 // Then insert the new test user
                 await dbOperations.run(`
@@ -562,6 +566,110 @@ async function startServer() {
             } catch (error) {
                 console.error('Error testing login:', error);
                 res.status(500).json({ message: 'Error testing login', error: error.message });
+            }
+        });
+
+        // Chatbot endpoint
+        app.post('/api/chatbot', async (req, res) => {
+            try {
+                const { message } = req.body;
+                const category = await chatbot.queryDatabase(message);
+                console.log('Chatbot category:', category);
+                let response;
+                // Company-related patterns
+                const companyPatterns = [
+                    'companies', 'company', 'employers', 'employer', 'top employers', 'which companies', 'who is hiring', 'companies hiring', 'how many companies'
+                ];
+                const normalizedCategory = category.toLowerCase().trim();
+                console.log('Normalized category value:', JSON.stringify(normalizedCategory), 'Length:', normalizedCategory.length); // Debug log
+                if (companyPatterns.some(pattern => normalizedCategory.includes(pattern))) {
+                    console.log('Company-related logic triggered for category:', normalizedCategory); // Debug log
+                    const companyStats = await dbOperations.all(`
+                        SELECT company, COUNT(*) as count
+                        FROM jobs
+                        WHERE status = 'active'
+                        GROUP BY company
+                        ORDER BY count DESC
+                    `);
+                    if (companyStats && companyStats.length > 0) {
+                        const companiesList = companyStats.map(stat => `${stat.company} (${stat.count} jobs)`).join(', ');
+                        response = `The following companies are currently hiring: ${companiesList}. Each company has unique opportunities and benefits. You can explore company profiles to learn more about their culture and available positions.`;
+                    } else {
+                        response = "We currently have no companies actively hiring. Please check back later for new opportunities.";
+                    }
+                } else {
+                    switch (category) {
+                        case 'jobs':
+                            // New: List job titles and companies for open jobs
+                            const openJobs = await dbOperations.all(`
+                                SELECT title, company
+                                FROM jobs
+                                WHERE status = 'active'
+                                ORDER BY postedAt DESC
+                                LIMIT 5
+                            `);
+                            const totalJobs = await dbOperations.all(`
+                                SELECT COUNT(*) as total
+                                FROM jobs
+                                WHERE status = 'active'
+                            `);
+                            if (openJobs && openJobs.length > 0) {
+                                const jobList = openJobs.map(job => `${job.title} at ${job.company}`).join(', ');
+                                let moreMsg = '';
+                                if (totalJobs[0].total > 5) {
+                                    moreMsg = `, and ${totalJobs[0].total - 5} more jobs available.`;
+                                }
+                                response = `Here are some open positions: ${jobList}${moreMsg} You can browse all positions on our jobs page.`;
+                            } else {
+                                response = "We currently have no open positions. Please check back later for new opportunities.";
+                            }
+                            break;
+                        case 'salary':
+                            response = "Salary information is available in each job listing. Compensation varies based on the role, experience level, and location. Many positions also offer additional benefits like health insurance, 401(k) matching, and flexible work arrangements.";
+                            break;
+                        case 'location':
+                            const locationStats = await dbOperations.all(`
+                                SELECT location, COUNT(*) as count
+                                FROM jobs
+                                WHERE status = 'active'
+                                GROUP BY location
+                                ORDER BY count DESC
+                                LIMIT 5
+                            `);
+                            if (locationStats && locationStats.length > 0) {
+                                const locations = locationStats.map(stat => `${stat.location} (${stat.count} jobs)`).join(', ');
+                                response = `Our jobs are available in various locations. The top locations with open positions are: ${locations}. Many positions also offer remote work options.`;
+                            } else {
+                                response = "We currently have no jobs listed in any locations. Please check back later for new opportunities.";
+                            }
+                            break;
+                        case 'skills':
+                            const skillStats = await dbOperations.all(`
+                                SELECT qualifications as skills, COUNT(*) as count
+                                FROM jobs
+                                WHERE status = 'active'
+                                GROUP BY qualifications
+                                ORDER BY count DESC
+                                LIMIT 5
+                            `);
+                            if (skillStats && skillStats.length > 0) {
+                                const skills = skillStats.map(stat => `${stat.skills} (${stat.count} jobs)`).join(', ');
+                                response = `The most in-demand skills in our current job listings are: ${skills}. Each job listing includes detailed requirements and qualifications.`;
+                            } else {
+                                response = "We currently have no jobs listed with specific skill requirements. Please check back later for new opportunities.";
+                            }
+                            break;
+                        case 'application':
+                            response = "To apply for a job, you'll need to: 1) Create an account or log in, 2) Upload your resume, 3) Complete the application form for the position you're interested in, and 4) Submit your application. Our team will review your application and get back to you if there's a match.";
+                            break;
+                        default:
+                            response = await chatbot.processMessage(message);
+                    }
+                }
+                res.json({ response });
+            } catch (error) {
+                console.error('Chatbot error:', error);
+                res.status(500).json({ error: 'Failed to process your request' });
             }
         });
 
