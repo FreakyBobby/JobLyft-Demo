@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 return;
             }
 
-            const response = await fetch('/api/jobs', {
+            const response = await fetch('/api/jobs?mine=true', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
 
             const jobs = await response.json();
+            
             displayJobs(jobs);
             updateJobStats(jobs);
         } catch (error) {
@@ -185,22 +186,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    // Show notification
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            ${message}
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.classList.add('fade-out');
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
+
 
     // Add event listeners
     if (jobSearch) {
@@ -215,4 +201,129 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Load initial jobs
     loadJobs();
+
+    // Make functions available globally for onclick handlers
+    window.viewApplications = viewApplications;
+    window.editJob = editJob;
+    window.deleteJob = deleteJob;
 });
+
+// View Applications function
+async function viewApplications(jobId) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+            return;
+        }
+
+        const response = await fetch(`/api/jobs/${jobId}/applications`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch applications');
+        }
+
+        const applications = await response.json();
+        
+        // For now, show applications count in an alert
+        // In a real app, this would open a modal or navigate to a dedicated page
+        if (applications.length === 0) {
+            showNotification('No applications found for this job', 'info');
+        } else {
+            showNotification(`Found ${applications.length} application(s) for this job`, 'success');
+            console.log('Applications:', applications);
+            // TODO: Implement proper applications viewing UI
+        }
+    } catch (error) {
+        console.error('Error viewing applications:', error);
+        showNotification(error.message || 'Failed to load applications', 'error');
+    }
+}
+
+// Edit Job function
+function editJob(jobId) {
+    try {
+        // Navigate to post-job.html with edit parameter
+        window.location.href = `post-job.html?edit=${jobId}`;
+    } catch (error) {
+        console.error('Error navigating to edit job:', error);
+        showNotification('Failed to open job editor', 'error');
+    }
+}
+
+// Delete Job function
+async function deleteJob(jobId) {
+    try {
+        // Show confirmation dialog
+        const confirmed = confirm('Are you sure you want to delete this job? This action cannot be undone.');
+        if (!confirmed) {
+            return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+            return;
+        }
+
+        const response = await fetch(`/api/jobs/${jobId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete job');
+        }
+
+        showNotification('Job deleted successfully', 'success');
+        
+        // Reload jobs to refresh the list
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+    } catch (error) {
+        console.error('Error deleting job:', error);
+        showNotification(error.message || 'Failed to delete job', 'error');
+    }
+}
+
+// Show notification function
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+        ${message}
+    `;
+    
+    // Add some basic styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 300px;
+        transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
