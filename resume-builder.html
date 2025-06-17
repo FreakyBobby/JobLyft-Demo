@@ -248,110 +248,88 @@
             font-size: 24px;
             color: var(--light-text);
             cursor: pointer;
-            background: none;
-            border: none;
-            padding: 8px;
-            transition: var(--transition);
         }
 
         .close-modal:hover {
-            color: var(--accent-color);
-            transform: rotate(90deg);
-        }
-
-        .resume-preview {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        .resume-preview h1 {
             color: var(--secondary-color);
-            font-size: 32px;
-            margin-bottom: 10px;
         }
 
-        .resume-preview .contact-info {
-            color: var(--light-text);
+        .resume-preview-content {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .resume-preview-content h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .resume-preview-content .contact-info {
+            text-align: center;
             margin-bottom: 30px;
             font-size: 16px;
+            color: #555;
         }
 
-        .resume-preview section {
+        .resume-preview-content section {
             margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
         }
 
-        .resume-preview h2 {
-            color: var(--primary-color);
+        .resume-preview-content section:last-child {
+            border-bottom: none;
+        }
+
+        .resume-preview-content h2 {
+            color: var(--secondary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 24px;
         }
 
-        .resume-preview .experience-item,
-        .resume-preview .education-item {
-            margin-bottom: 25px;
+        .resume-preview-content .experience-item,
+        .resume-preview-content .education-item {
+            margin-bottom: 20px;
         }
 
-        .resume-preview .experience-item h3,
-        .resume-preview .education-item h3 {
-            color: var(--secondary-color);
+        .resume-preview-content .experience-item h3,
+        .resume-preview-content .education-item h3 {
+            color: var(--primary-color);
             margin-bottom: 5px;
             font-size: 18px;
         }
 
-        .resume-preview .experience-item .company,
-        .resume-preview .education-item .school {
-            color: var(--light-text);
+        .resume-preview-content .company,
+        .resume-preview-content .school {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .resume-preview-content .dates {
             font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .resume-preview .experience-item .dates,
-        .resume-preview .education-item .dates {
-            color: var(--light-text);
-            font-size: 14px;
+            color: #777;
             margin-bottom: 10px;
+            font-size: 14px;
         }
 
-        .resume-preview .skills-list {
+        .resume-preview-content .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 10px;
         }
 
-        .resume-preview .skill-tag {
-            background: var(--background-color);
-            color: var(--secondary-color);
-            padding: 6px 12px;
-            border-radius: 15px;
+        .resume-preview-content .skills-list .skill-tag {
+            background: #e7f3ff;
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 5px;
             font-size: 14px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .download-btn {
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 16px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .download-btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -363,53 +341,66 @@
                 <a href="index.html">Joblyft</a>
             </div>
             <div class="nav-links">
+                <a href="index.html">Home</a>
                 <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
                 <a href="my-jobs.html">My Jobs</a>
-                <a href="employer-dashboard.html">Employer Dashboard</a>
-                <div id="auth-buttons">
-                    <a href="login.html" class="btn btn-secondary">Login</a>
-                    <a href="register.html" class="btn btn-primary">Register</a>
-                </div>
+                <a href="employer-dashboard.html" class="btn btn-primary">Dashboard</a>
             </div>
         </div>
     </nav>
 
-    <div class="page-header">
-        <h1>Build Your Professional Resume</h1>
-        <p>Create a standout resume that will help you land your dream job</p>
-    </div>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Build Your Professional Resume</h1>
+            <p>Create a stunning, ATS-friendly resume that helps you stand out and land your dream job. Fill in your details below to get started.</p>
+        </div>
+    </header>
 
-    <div class="resume-builder">
+    <!-- Main Content -->
+    <main class="resume-builder">
         <form id="resumeForm">
-            <div class="resume-section">
-                <h2><i class="fas fa-user"></i> Personal Information</h2>
+            <!-- Personal Information -->
+            <section class="resume-section">
+                <h2><i class="fas fa-user-alt"></i> Personal Information</h2>
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" name="fullName" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
                 </div>
                 <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" required>
+                    <label for="location">Location (City, State)</label>
+                    <input type="text" id="location" name="location">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile (Optional)</label>
+                    <input type="url" id="linkedin" name="linkedin">
+                </div>
+                <div class="form-group">
+                    <label for="portfolio">Portfolio/Website (Optional)</label>
+                    <input type="url" id="portfolio" name="portfolio">
+                </div>
+            </section>
 
-            <div class="resume-section">
+            <!-- Professional Summary -->
+            <section class="resume-section">
                 <h2><i class="fas fa-file-alt"></i> Professional Summary</h2>
                 <div class="form-group">
-                    <label for="summary">Write a brief summary of your professional background and career goals</label>
+                    <label for="summary">Write a concise summary of your skills and experience. Max 3-5 sentences.</label>
                     <textarea id="summary" name="summary" required></textarea>
                 </div>
-            </div>
+            </section>
 
-            <div class="resume-section">
+            <!-- Work Experience -->
+            <section class="resume-section">
                 <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
                 <div id="experienceEntries">
                     <div class="entry">
@@ -418,29 +409,28 @@
                             <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
                         </div>
                         <div class="form-group">
-                            <label for="jobTitle">Job Title</label>
-                            <input type="text" id="jobTitle" name="jobTitle[]" required>
+                            <label for="jobTitle1">Job Title</label>
+                            <input type="text" id="jobTitle1" name="jobTitle[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company[]" required>
+                            <label for="company1">Company</label>
+                            <input type="text" id="company1" name="company[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="jobDates">Dates (e.g., Jan 2020 - Present)</label>
-                            <input type="text" id="jobDates" name="jobDates[]" required>
+                            <label for="jobDates1">Dates (e.g., Jan 2020 - Present)</label>
+                            <input type="text" id="jobDates1" name="jobDates[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="jobDescription">Job Description</label>
-                            <textarea id="jobDescription" name="jobDescription[]" required></textarea>
+                            <label for="jobDescription1">Job Description</label>
+                            <textarea id="jobDescription1" name="jobDescription[]" required></textarea>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="add-btn" onclick="addExperience()">
-                    <i class="fas fa-plus"></i> Add Work Experience
-                </button>
-            </div>
+                <button type="button" class="add-btn" onclick="addExperience()"><i class="fas fa-plus"></i> Add Another Experience</button>
+            </section>
 
-            <div class="resume-section">
+            <!-- Education -->
+            <section class="resume-section">
                 <h2><i class="fas fa-graduation-cap"></i> Education</h2>
                 <div id="educationEntries">
                     <div class="entry">
@@ -449,55 +439,51 @@
                             <button type="button" class="remove-btn" onclick="removeEntry(this)">Remove</button>
                         </div>
                         <div class="form-group">
-                            <label for="degree">Degree/Certificate</label>
-                            <input type="text" id="degree" name="degree[]" required>
+                            <label for="degree1">Degree/Certificate</label>
+                            <input type="text" id="degree1" name="degree[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="school">School/Institution</label>
-                            <input type="text" id="school" name="school[]" required>
+                            <label for="school1">School/Institution</label>
+                            <input type="text" id="school1" name="school[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="educationDates">Dates (e.g., 2016 - 2020)</label>
-                            <input type="text" id="educationDates" name="educationDates[]" required>
+                            <label for="educationDates1">Dates (e.g., 2016 - 2020)</label>
+                            <input type="text" id="educationDates1" name="educationDates[]" required>
                         </div>
                         <div class="form-group">
-                            <label for="educationDescription">Additional Information</label>
-                            <textarea id="educationDescription" name="educationDescription[]"></textarea>
+                            <label for="educationDescription1">Additional Information</label>
+                            <textarea id="educationDescription1" name="educationDescription[]"></textarea>
                         </div>
                     </div>
                 </div>
-                <button type="button" class="add-btn" onclick="addEducation()">
-                    <i class="fas fa-plus"></i> Add Education
-                </button>
-            </div>
+                <button type="button" class="add-btn" onclick="addEducation()"><i class="fas fa-plus"></i> Add Another Education</button>
+            </section>
 
-            <div class="resume-section">
-                <h2><i class="fas fa-tools"></i> Skills</h2>
+            <!-- Skills -->
+            <section class="resume-section">
+                <h2><i class="fas fa-cogs"></i> Skills</h2>
                 <div class="form-group">
-                    <label for="skillInput">Add Skills (press Enter after each skill)</label>
-                    <input type="text" id="skillInput" placeholder="Type a skill and press Enter">
+                    <label for="skillInput">Add a skill and press Enter:</label>
+                    <input type="text" id="skillInput" placeholder="e.g., JavaScript, Project Management, Data Analysis">
                 </div>
-                <div id="skillsList" class="skills-container"></div>
-            </div>
+                <div class="skills-container" id="skillsList">
+                    <!-- Skills will be added here dynamically -->
+                </div>
+            </section>
 
-            <button type="submit" class="preview-btn">
-                <i class="fas fa-eye"></i> Preview Resume
-            </button>
+            <button type="button" class="preview-btn" onclick="generatePreview(); showModal();"><i class="fas fa-eye"></i> Preview Resume</button>
         </form>
-    </div>
+    </main>
 
     <!-- Preview Modal -->
-    <div id="previewModal" class="modal">
+    <div id="resumePreviewModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <div id="resumePreview" class="resume-preview">
-                <!-- Preview content will be inserted here -->
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Resume Preview</h2>
+            <div id="resumePreview" class="resume-preview-content">
+                <!-- Resume content will be generated here -->
             </div>
-            <div class="action-buttons">
-                <button class="download-btn" onclick="downloadResume()">
-                    <i class="fas fa-download"></i> Download PDF
-                </button>
-            </div>
+            <button class="preview-btn" onclick="downloadPdf()">Download as PDF</button>
         </div>
     </div>
 
@@ -513,23 +499,19 @@
                     <div class="footer-column">
                         <h4>For Job Seekers</h4>
                         <a href="job-search.html">Find Jobs</a>
-                        <a href="#">Career Resources</a>
                         <a href="resume-builder.html">Resume Builder</a>
-                        <a href="#">Career Advice</a>
                     </div>
                     <div class="footer-column">
                         <h4>For Employers</h4>
                         <a href="post-job.html">Post a Job</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">Recruitment Solutions</a>
-                        <a href="#">Employer Resources</a>
+                        <a href="employer-resources.html">Employer Resources</a>
                     </div>
                     <div class="footer-column">
                         <h4>Company</h4>
-                        <a href="#">About Us</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Blog</a>
+                        <a href="about-us.html">About Us</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -726,64 +708,17 @@
         }
 
         function showModal() {
-            document.getElementById('previewModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            document.getElementById('resumePreviewModal').style.display = 'block';
         }
 
         function closeModal() {
-            document.getElementById('previewModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.getElementById('resumePreviewModal').style.display = 'none';
         }
 
-        function downloadResume() {
+        function downloadPdf() {
             const element = document.getElementById('resumePreview');
-            const opt = {
-                margin: 1,
-                filename: 'resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            // Add a loading state to the button
-            const downloadBtn = document.querySelector('.download-btn');
-            const originalText = downloadBtn.innerHTML;
-            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-            downloadBtn.disabled = true;
-
-            // Generate the PDF
-            html2pdf().set(opt).from(element).save().then(() => {
-                // Restore the button state
-                downloadBtn.innerHTML = originalText;
-                downloadBtn.disabled = false;
-            }).catch(err => {
-                console.error('Error generating PDF:', err);
-                downloadBtn.innerHTML = originalText;
-                downloadBtn.disabled = false;
-                alert('Error generating PDF. Please try again.');
-            });
+            html2pdf().from(element).save('resume.pdf');
         }
-
-        document.getElementById('resumeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            generatePreview();
-            showModal();
-        });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('previewModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Close modal when pressing Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
     </script>
 </body>
-</html> 
+</html>

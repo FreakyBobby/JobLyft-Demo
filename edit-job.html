@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job - Joblyft</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/post-job.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Joblyft</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="job-search.html" class="nav-link">Find Jobs</a></li>
+                <li class="nav-item"><a href="post-job.html" class="nav-link">Post a Job</a></li>
+                <li class="nav-item"><a href="my-jobs.html" class="nav-link">My Jobs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="post-job-container">
+            <h1>Edit Job</h1>
+            <form id="editJobForm">
+                <div class="form-section">
+                    <h2>Basic Information</h2>
+                    <div class="form-group">
+                        <label for="title">Job Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Job Type</label>
+                        <select id="type" name="type" required>
+                            <option value="full-time">Full Time</option>
+                            <option value="part-time">Part Time</option>
+                            <option value="contract">Contract</option>
+                            <option value="internship">Internship</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Salary and Benefits</h2>
+                    <div class="form-group">
+                        <label for="salary">Salary Range</label>
+                        <input type="text" id="salary" name="salary" placeholder="e.g., $50,000 - $70,000">
+                    </div>
+                    <div class="form-group">
+                        <label for="benefits">Benefits</label>
+                        <textarea id="benefits" name="benefits" rows="3" placeholder="List the benefits offered"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Job Description</h2>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="requirements">Requirements</label>
+                        <textarea id="requirements" name="requirements" rows="5" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Additional Information</h2>
+                    <div class="form-group">
+                        <label for="applicationUrl">Application URL</label>
+                        <input type="url" id="applicationUrl" name="applicationUrl" placeholder="https://">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" required>
+                            <option value="active">Active</option>
+                            <option value="draft">Draft</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='my-jobs.html'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Job</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>For Job Seekers</h3>
+                    <ul>
+                        <li><a href="job-search.html">Find Jobs</a></li>
+                        <li><a href="resume-builder.html">Resume Builder</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>For Employers</h3>
+                    <ul>
+                        <li><a href="post-job.html">Post a Job</a></li>
+                        <li><a href="employer-resources.html">Employer Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/edit-job.js"></script>
+</body>
+</html> 

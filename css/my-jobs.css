@@ -1,0 +1,246 @@
+/* My Jobs Page Styles */
+.my-jobs-page {
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 36px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.page-header p {
+    color: var(--light-text);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Job Filters */
+.job-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.search-filter {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-filter input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 15px;
+}
+
+.filter-options select {
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+/* Jobs Container */
+.jobs-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+}
+
+/* Jobs List */
+.jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.job-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.job-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.job-header h3 {
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+.job-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.job-status.active {
+    background-color: #e1f7e1;
+    color: #2ecc71;
+}
+
+.job-status.pending {
+    background-color: #fff3e0;
+    color: #f39c12;
+}
+
+.job-status.expired {
+    background-color: #ffe0e0;
+    color: #e74c3c;
+}
+
+.job-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.job-details p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+.job-details i {
+    color: var(--primary-color);
+    width: 20px;
+}
+
+.job-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: var(--white);
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Job Statistics */
+.job-stats {
+    position: sticky;
+    top: 100px;
+}
+
+.job-stats h3 {
+    font-size: 20px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.stats-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.stats-card h4 {
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.stats-card .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.stats-card .stat-item:last-child {
+    border-bottom: none;
+}
+
+.stats-card .stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stats-card .stat-label {
+    font-size: 14px;
+    color: var(--light-text);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .jobs-container {
+        grid-template-columns: 1fr;
+    }
+
+    .job-stats {
+        position: static;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .job-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-filter {
+        max-width: none;
+    }
+
+    .filter-options {
+        flex-direction: column;
+    }
+
+    .job-details {
+        grid-template-columns: 1fr;
+    }
+
+    .job-actions {
+        flex-direction: column;
+    }
+
+    .job-actions .btn {
+        width: 100%;
+    }
+} 

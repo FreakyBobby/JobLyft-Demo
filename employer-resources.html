@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Resources - Joblyft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .resources-page {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        .resources-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .resources-header h1 {
+            font-size: 2.5em;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        .resources-header p {
+            font-size: 1.2em;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        .resource-icon {
+            font-size: 2em;
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+        .resource-card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .resource-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .resource-links {
+            list-style: none;
+            padding: 0;
+        }
+        .resource-links li {
+            margin: 10px 0;
+        }
+        .resource-links a {
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        .resource-links a:hover {
+            color: #1d4ed8;
+        }
+        .resource-links i {
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Joblyft</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="job-search.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="my-jobs.html">My Jobs</a>
+                <a href="employer-dashboard.html">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="resources-page">
+        <div class="container">
+            <div class="resources-header">
+                <h1>Employer Resources</h1>
+                <p>Tools and guides to help you optimize your hiring process and attract top talent</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Hiring Guides</h3>
+                    <p>Comprehensive guides to help you navigate the hiring process effectively</p>
+                    <ul class="resource-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Writing Effective Job Descriptions</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Interview Best Practices</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Onboarding Checklist</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Remote Hiring Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Market Insights</h3>
+                    <p>Stay informed about industry trends and salary benchmarks</p>
+                    <ul class="resource-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Industry Salary Reports</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Hiring Trends Analysis</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Skills Gap Research</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Market Demand Insights</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Hiring Tools</h3>
+                    <p>Practical tools to streamline your recruitment process</p>
+                    <ul class="resource-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Job Description Templates</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Interview Question Bank</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Resume Screening Tips</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Hiring Process Templates</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Training & Development</h3>
+                    <p>Resources to help your team excel in recruitment</p>
+                    <ul class="resource-links">
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Recruiter Training</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Interview Skills Workshop</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Diversity Hiring Guide</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> Employer Branding Tips</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Joblyft</h3>
+                    <p>Elevate your job search</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>For Job Seekers</h4>
+                        <a href="job-search.html">Find Jobs</a>
+                        <a href="resume-builder.html">Resume Builder</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>For Employers</h4>
+                        <a href="post-job.html">Post a Job</a>
+                        <a href="employer-resources.html">Employer Resources</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about-us.html">About Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Joblyft. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
