@@ -26,7 +26,7 @@
             <div class="user-menu">
                 <div class="user-profile">
                     <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
-                    <span id="user-email">roshio@gmail.com</span>
+                    <span id="user-email">Loading...</span>
                 </div>
                 <button id="logout-btn" class="btn btn-secondary">Logout</button>
             </div>
@@ -38,7 +38,7 @@
         <div class="container">
             <div class="dashboard-header">
                 <h1>Employer Dashboard</h1>
-                <p>Welcome back, <span id="welcome-name">Roshio</span>! Here's an overview of your job postings and applications.</p>
+                <p>Welcome back, <span id="welcome-name">User</span>! Here's an overview of your job postings and applications.</p>
             </div>
             
             <div class="dashboard-stats">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="stat-info">
                         <h3>Active Jobs</h3>
-                        <p class="stat-number">12</p>
+                        <p class="stat-number">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="stat-info">
                         <h3>Total Applications</h3>
-                        <p class="stat-number">48</p>
+                        <p class="stat-number">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="stat-info">
                         <h3>Job Views</h3>
-                        <p class="stat-number">1,245</p>
+                        <p class="stat-number">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
@@ -75,7 +75,56 @@
                     </div>
                     <div class="stat-info">
                         <h3>Candidates Hired</h3>
-                        <p class="stat-number">5</p>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="dashboard-sidebar">
+                    <div class="sidebar-menu">
+                        <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="#"><i class="fas fa-briefcase"></i> My Jobs</a>
+                        <a href="#"><i class="fas fa-file-alt"></i> Applications</a>
+                        <a href="#"><i class="fas fa-users"></i> Candidates</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-main">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Job Postings</h2>
+                            <a href="post-job.html" class="btn btn-primary">Post New Job</a>
+                        </div>
+                        <div class="card-content">
+                            <table class="dashboard-table">
+                                <thead>
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <th>Posted Date</th>
+                                        <th>Applications</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Jobs will be dynamically loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h2>Recent Applications</h2>
+                            <a href="#" class="btn btn-secondary">View All</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="application-list">
+                                <!-- Applications will be dynamically loaded here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -227,11 +227,32 @@ async function startServer() {
             }
         });
 
-        // Get all jobs
+        // Get all jobs (with optional filtering by current user)
         app.get('/api/jobs', async (req, res) => {
             try {
-                const jobs = await Job.find();
-                res.json(jobs);
+                const { mine } = req.query;
+                
+                if (mine === 'true') {
+                    // Check if user is authenticated for "my jobs" request
+                    const token = req.header('Authorization')?.replace('Bearer ', '');
+                    if (!token) {
+                        return res.status(401).json({ message: 'Authentication required' });
+                    }
+                    
+                    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+                    
+                    // WORKAROUND: Use the working database query method
+                    // Get all jobs and filter in memory instead of using Job.find
+                    const allJobs = await dbOperations.all('SELECT * FROM jobs ORDER BY postedAt DESC');
+                    const userJobs = allJobs
+                        .filter(job => job.postedBy === decoded.id)
+                        .map(job => new Job(job));
+                    
+                    return res.json(userJobs);
+                } else {
+                    const jobs = await Job.find();
+                    res.json(jobs);
+                }
             } catch (error) {
                 console.error('Error fetching jobs:', error);
                 res.status(500).json({ message: error.message || 'Failed to fetch jobs' });
@@ -484,6 +505,8 @@ async function startServer() {
             }
         });
 
+
+
         // Debug route to force-add a test user directly with SQL
         app.get('/api/debug/force-add-test-user', async (req, res) => {
             try {
@@ -493,7 +516,7 @@ async function startServer() {
                 const now = new Date().toISOString();
                 
                 // First delete any existing test user
-                await dbOperations.run('DELETE FROM users WHERE email = ?', ['test@example.com']);ƒ
+                await dbOperations.run('DELETE FROM users WHERE email = ?', ['test@example.com']);
                 
                 // Then insert the new test user
                 await dbOperations.run(`
